@@ -13,29 +13,29 @@ const InitialSetting = () => {
   };
   return (
     <>
-      <div class="setting-head">
-        <img class="setting-head__logo" src="img/emoticons/logo/logo3.png" />
+      <div className="setting-head">
+        <img className="setting-head__logo" src="img/emoticons/logo/logo3.png" />
         <br />
-        <span class="setting-head__text">
+        <span className="setting-head__text">
           가입이 완료되었어요!
           <br />
           기본 설정이 필요해요.
         </span>
       </div>
-      <div class="setting-body">
-        <span class="setting-body__text">
+      <div className="setting-body">
+        <span className="setting-body__text">
           이름
           <br />
         </span>
-        <input class="setting-body__input" placeholder="김멋사"></input>
+        <input className="setting-body__input" placeholder="김멋사"></input>
         <br />
-        <span class="setting-body__text">
+        <span className="setting-body__text">
           생일
           <br />
         </span>
-        <input class="setting-body__input" placeholder="10/16"></input>
+        <input className="setting-body__input" placeholder="10/16"></input>
         <br />
-        <span class="setting-body__text text3">
+        <span className="setting-body__text text3">
           파티룸 배경 색상
           <br />
         </span>
@@ -91,14 +91,14 @@ const InitialSetting = () => {
           />
         </ButtonContainer>
 
-        <div class="setting-body__view">
+        <div className="setting-body__view">
           <TextPallete textcolor={textcolor}>김멋사의 생일</TextPallete>
           <Pallete color={color} />
         </div>
       </div>
-      <div class="setting-foot">
-        <div class="setting-foot__btn" onClick={setBtn}>
-          <span class="setting-foot__text">설정</span>
+      <div className="setting-foot">
+        <div className="setting-foot__btn" onClick={setBtn}>
+          <span className="setting-foot__text">설정</span>
         </div>
       </div>
     </>
