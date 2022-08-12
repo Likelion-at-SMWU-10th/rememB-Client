@@ -3,7 +3,7 @@ import PartyRoom from '../../components/CommonHome/PartyRoom';
 import ToBalance from '../../components/MyHome/ToBalance';
 import WatchBalance from '../../components/CommonHome/WatchBalance';
 import axios from 'axios';
-import Layout from '../../components/CommonHome/Layout';
+import ShareLayout from '../../components/CommonHome/ShareLayout';
 import { useLocation } from 'react-router-dom';
 const MyHome = ({ res }) => {
   const location = useLocation();
@@ -36,11 +36,12 @@ const MyHome = ({ res }) => {
     window.location.href.includes('access_token') && getToken();
   }, []);
   return (
-    <Layout>
+    <ShareLayout>
       <PartyRoom />
       <ToBalance />
+      {/*생일 당일이 되면, ToBalancce대신 롤링페이퍼 보기 버튼으로*/}
       <WatchBalance who={'나'} />
-    </Layout>
+    </ShareLayout>
   );
 };
 

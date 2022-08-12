@@ -4,6 +4,7 @@
 }
 
 html{
+    position: relative;
     width: 350px;
     margin: auto;
     /* font-size: 0.3vw; */

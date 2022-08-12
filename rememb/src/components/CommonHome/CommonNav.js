@@ -7,7 +7,7 @@ const CommonNav=() => {
   return (
     <>
       {[false].map((expand) => (
-        <Navbar key={expand} expand={expand} className="mb-3" style={{position:'absolute',top:'15rem',right:'30px'}}>
+        <Navbar key={expand} expand={expand} className="mb-3" style={{position:'absolute',top:'15rem',right:'10rem'}}>
           <Container fluid >
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
