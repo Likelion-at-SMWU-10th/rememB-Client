@@ -45,7 +45,6 @@ const MyHome = ({ res }) => {
         }
       )
       .then((res) => {
-        window.location.replace('/tutorial');
         console.log(res);
         console.log(res.data);
       }).catch(function (error) {
