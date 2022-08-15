@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Layout from '../../components/CommonHome/Layout';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MylistAfter = styled.div`
@@ -45,8 +45,11 @@ const Question = styled.div`
   margin-top: 20px;
 `;
 
-const SeeBalance = ({ token }) => {
+const SeeBalance = () => {
   const navigate = useNavigate();
+  const location= useLocation();
+  const token = location.state.token;
+
   const onClick1 = () => {
     // D-7 밸런스게임 페이지로
     navigate('');
