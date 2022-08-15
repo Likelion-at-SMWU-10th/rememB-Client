@@ -34,7 +34,7 @@ const MyHome = ({ res }) => {
       axios.post(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
-          email:"happine2s@gmail.com",
+          email:response.data.response.name,
           username: "박소똥",
           provider:'naver',
           birth:"2003-01-05"
@@ -47,10 +47,11 @@ const MyHome = ({ res }) => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
+        console.log(response.data.response.name);
       }).catch(function (error) {
         console.log(error);
         console.log(response.data);
-        console.log(response.data.name);
+        console.log(response.data.response.name);
         console.log(response.email);
         console.log(response.birthday);
       });
