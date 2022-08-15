@@ -32,9 +32,9 @@ const MyHome = ({ res }) => {
         },
       }
     ).then(response=>{
-      console.log(userData);
-      console.log(userData.data);
-      console.log(userData.data.response);
+      // console.log(userData);
+      // console.log(userData.data);
+      // console.log(userData.data.response);
       // console.log();
       // setInfo(response.data.response);
       // setUsername(info.name);
@@ -58,6 +58,7 @@ const MyHome = ({ res }) => {
         }
       )
       .then((res) => {
+        console.log("됐니 ㅜㅜ");
         console.log(res);
         console.log(res.data);
       }).catch(function (error) {
