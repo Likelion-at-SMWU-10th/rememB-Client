@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import React from 'react'
+import { Route, Routes } from "react-router-dom";
 import Home from './pages/MyHome/MyHome';
 import AnswerBalance from './pages/MyHome/AnswerBalance';
 import SeeBalance from './pages/MyHome/SeeBalance';

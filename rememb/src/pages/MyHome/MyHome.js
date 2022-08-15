@@ -5,6 +5,7 @@ import WatchBalance from '../../components/CommonHome/WatchBalance';
 import axios from 'axios';
 import ShareLayout from '../../components/CommonHome/ShareLayout';
 import { useLocation } from 'react-router-dom';
+import SeeRP from '../../components/Etc/SeeRP';
 const MyHome = ({ res }) => {
   const location = useLocation();
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
