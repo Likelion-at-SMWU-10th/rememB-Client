@@ -5,24 +5,26 @@ import { useNavigate } from "react-router-dom";
 
 const BalCon=styled.div`
   background-color: #D9D9D9;
-  width: 90%;
+  width: 90rem;
   margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10vh;
+  text-align: center;
+  /* margin-bottom: 20px; */
+  /* position: relative; */
   padding: 10px;
-  height: 20em;
+  height: 50vh;
 `;
 const BalA=styled.div`
-  position: relative;
+  /* position: absolute; */
   width: fit-content;
-  top: 25%;
-  margin: auto;
+  text-align: center;
+  /* margin: auto; */
   font-size: 20px;
   text-align:center;
 `;
 const BalQ=styled.div`
   text-align: center;
-  position: relative;
+  /* position: absolute; */
   font-weight: 500;
   top: 10%;
   font-size: 30px;
