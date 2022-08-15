@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PartyRoom from '../../components/CommonHome/PartyRoom';
 import ToBalance from '../../components/MyHome/ToBalance';
 import WatchBalance from '../../components/CommonHome/WatchBalance';
@@ -8,6 +8,10 @@ import { useLocation } from 'react-router-dom';
 
 const MyHome = ({ res }) => {
   const location = useLocation();
+  const [email,setEmail]=useState('');
+  const [username,setUsername]=useState('');
+  const [birth,setBirth]=useState('');
+  const [provider,setProvider]=useState('');
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
   if (!window.location.href.includes('access_token')) {
     res = location.state.res;
@@ -17,14 +21,14 @@ const MyHome = ({ res }) => {
 
   const getToken = () => {
     const token = window.location.href.split('=')[1].split('&')[0];
-    axios
-      .post(
+    axios.post(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
-          headers: {
-            'Access-Control-Allow-Origin': `${window.location.href}`,
-          },
-          token,
+          email:`${email}`,
+          username:`${username}`,
+          provider:`${provider}`,
+          birth:`${birth}`,
+          // token,
         },
         {
           withCredentials: false,
@@ -34,6 +38,8 @@ const MyHome = ({ res }) => {
         window.location.replace('/tutorial');
         console.log(res);
         console.log(res.data);
+      }).catch(function (error) {
+        console.log(error);
       });
     const userData = axios.get(
       'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
@@ -44,6 +50,13 @@ const MyHome = ({ res }) => {
           'Access-Control-Allow-Credentials': true,
         },
       }
+    ).then(response=>{
+      console.log(response.data);
+      setBirth(response.birthday);
+      setEmail(response.email);
+      setUsername(response.name);
+      setProvider('naver');
+    }
     );
     //CORS에러 뜨는게 당연함 !! 구래서 ARC로 헤더 넣어서 get 요청하면 제대로뜸
   };
