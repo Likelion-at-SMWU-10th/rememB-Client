@@ -34,10 +34,10 @@ const MyHome = ({ res }) => {
       axios.post(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
-          "email":response.email,
-          "username":response.name,
-          "provider":"naver",
-          "birth":response.birthday
+          email:response.email,
+          username:response.name,
+          provider:'naver',
+          birth:response.birthday
           // token,
         },
         {
@@ -50,6 +50,9 @@ const MyHome = ({ res }) => {
         console.log(res.data);
       }).catch(function (error) {
         console.log(error);
+        console.log(response.name);
+        console.log(response.email);
+        console.log(response.birthday);
       });
       console.log(response.data);
       // setBirth(response.birthday);
