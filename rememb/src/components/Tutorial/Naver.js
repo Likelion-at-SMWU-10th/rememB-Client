@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 const Naver = () => {
   const { naver } = window;
   const NAVER_CLIENT_ID = 'n0uYMSZfV8FBZpE_Qbgc'; // 발급 받은 Client ID 입력
-  const NAVER_CALLBACK_URL = 'http://localhost:3000/myParty/'; // 작성했던 Callback URL 입력
+  const NAVER_CALLBACK_URL = 'http://rememb.site:3000/myParty/'; // 작성했던 Callback URL 입력
 
   const initializeNaverLogin = () => {
     const naverLogin = new naver.LoginWithNaverId({
