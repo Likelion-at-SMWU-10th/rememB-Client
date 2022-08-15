@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 const MyHome = ({ res }) => {
   const location = useLocation();
+  const [info,setInfo]=useState('');
   const [email,setEmail]=useState('');
   const [username,setUsername]=useState('');
   const [birth,setBirth]=useState('');
@@ -31,13 +32,17 @@ const MyHome = ({ res }) => {
         },
       }
     ).then(response=>{
+      setInfo(response.data.response);
+      setUsername(info.name);
+      setBirth(info.birthyear+'-'+info.birthday);
+      setEmail(info.email);
       axios.post(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
-          email:response.data.response.email,
-          username: response.data.response.name,
+          email:email,
+          username: username,
           provider:'naver',
-          birth:response.data.response.birthyear+"-"+response.data.response.birthday
+          birth:birth
           // token,
         },
         {
@@ -47,19 +52,12 @@ const MyHome = ({ res }) => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        console.log(response.data.response.name);
       }).catch(function (error) {
         console.log(error);
         console.log(response.data);
         console.log(response.data.response.name);
-        console.log(response.email);
-        console.log(response.birthday);
       });
       console.log(response.data);
-      // setBirth(response.birthday);
-      // setEmail(response.email);
-      // setUsername(response.name);
-      // setProvider('naver');
     }
     );
     //CORS에러 뜨는게 당연함 !! 구래서 ARC로 헤더 넣어서 get 요청하면 제대로뜸
