@@ -50,7 +50,8 @@ const MyHome = ({ res }) => {
         console.log(res.data);
       }).catch(function (error) {
         console.log(error);
-        console.log(response.name);
+        console.log(response.data);
+        console.log(response.data.name);
         console.log(response.email);
         console.log(response.birthday);
       });
