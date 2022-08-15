@@ -13,7 +13,8 @@ const MyHome = ({ res }) => {
   const [username,setUsername]=useState('');
   const [birth,setBirth]=useState('');
   const [provider,setProvider]=useState('');
-  const [token,setToken]=useState('');
+  const [accessT,setAccessT]=useState('');
+  // const [token,setToken]=useState('');
   const [access,setAccess]=useState('');
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
   if (!window.location.href.includes('access_token')) {
@@ -23,9 +24,9 @@ const MyHome = ({ res }) => {
   }
 
   const getToken = () => {
-    setAccess(window.location.href.split('=')[1].split('&')[0]);
-    console.log(token);
-    console.log(access);
+    const token=window.location.href.split('=')[1].split('&')[0];
+    // console.log(token);
+    // console.log(access);
     const userData = axios.get(
       'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
       {
@@ -62,8 +63,10 @@ const MyHome = ({ res }) => {
         }
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         console.log(res.data);
+        console.log(res.data.results.accessToken);
+        setAccess(res.data.results.accessToken);
       }).catch(function (error) {
         console.log(error);
       });
@@ -77,14 +80,15 @@ const MyHome = ({ res }) => {
     window.location.href.includes('access_token') && getToken();
   }, []);
   useEffect(() => {
-    setToken(access)
+    // setToken(access)
+    setAccessT(access);
   }, [access]);
   return (
     <ShareLayout>
       <PartyRoom />
       <ToBalance />
       {/*생일 당일이 되면, ToBalancce대신 롤링페이퍼 보기 버튼으로*/}
-      <WatchBalance who={'나'} token={token} />
+      <WatchBalance who={'나'} token={accessT} />
     </ShareLayout>
   );
 };
