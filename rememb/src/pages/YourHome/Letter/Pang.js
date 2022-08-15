@@ -69,8 +69,8 @@ const Pang=({whichimg})=>{
         <>
             <Logo src="/img/pangLogo.png" alt='panglogo' />
             <PangBack>
-                <Deco1 src="/img/pang1.png" alt="background"/>
-                <Deco2 src="/img/pang2.png" alt='background' />
+                <Deco1 src="/img/Pang1.png" alt="background"/>
+                <Deco2 src="/img/Pang2.png" alt='background' />
                 <Img><img alt="선택한 일러스트" style={{zIndex:'3',width:'35rem',padding:'7rem'}} src={whichimg} /> </Img>
                 <Info>
                     편지가 전송됐어요!<br/>

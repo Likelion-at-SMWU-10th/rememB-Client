@@ -70,6 +70,8 @@ const Max=styled.span`
   position: absolute;
   bottom:15rem;
   right: 5rem;
+  font-size: 3rem;
+  color:gray;
   /* background-color: white; */
   /* padding:1rem; */
   /* border-radius: 10px; */
@@ -129,7 +131,7 @@ const WriteLetter = ({whichimg}) => {
     const img='/img/emoticons/'+whichimg[0]+'/'+whichimg[1]+'.png'
   return (
     <Layout>
-        <Letterback h='50vh'>
+        <Letterback>
         <img alt="선택한 일러스트" style={{float:'left',width:'20rem', height:'20rem', margin:'0 3rem 0 0',padding:'10px',borderRadius:'20px',backgroundColor:'white'}} src={img}/>
             <LetterTo>To. 멋사</LetterTo>
             <LetterInput
