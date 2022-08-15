@@ -13,10 +13,11 @@ const Btn=styled.div`
   background-color: #FFEFF3;
 `;
 const WatchBalance = ({who, token}) => {
+  console.log("watch", token);
   const navigate=useNavigate();
   const onClick=()=>{
     navigate('/myParty/seeBalance',{
-      state:{token:token},
+      token: token,
     });
   }
   return (

@@ -75,8 +75,8 @@ const SeeBalance = ({ token }) => {
       });
   };
   useEffect(() => {
-    getToken();
     console.log(token);
+    getToken();
   }, []);
   return (
     <Layout>
