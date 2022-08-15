@@ -12,10 +12,12 @@ const Btn=styled.div`
   border-radius: 80px;
   background-color: #FFEFF3;
 `;
-const WatchBalance = ({who}) => {
+const WatchBalance = ({who, token}) => {
   const navigate=useNavigate();
   const onClick=()=>{
-    navigate('/myParty/seeBalance');
+    navigate('/myParty/seeBalance',{
+      state:{token:token},
+    });
   }
   return (
       <Btn onClick={onClick}>{who}의 밸런스 보기</Btn>

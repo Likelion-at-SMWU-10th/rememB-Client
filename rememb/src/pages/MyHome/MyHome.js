@@ -13,6 +13,7 @@ const MyHome = ({ res }) => {
   const [username,setUsername]=useState('');
   const [birth,setBirth]=useState('');
   const [provider,setProvider]=useState('');
+  let token='';
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
   if (!window.location.href.includes('access_token')) {
     res = location.state.res;
@@ -21,7 +22,7 @@ const MyHome = ({ res }) => {
   }
 
   const getToken = () => {
-    const token = window.location.href.split('=')[1].split('&')[0];
+    token = window.location.href.split('=')[1].split('&')[0];
     const userData = axios.get(
       'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
       {
@@ -78,7 +79,7 @@ const MyHome = ({ res }) => {
       <PartyRoom />
       <ToBalance />
       {/*생일 당일이 되면, ToBalancce대신 롤링페이퍼 보기 버튼으로*/}
-      <WatchBalance who={'나'} />
+      <WatchBalance who={'나'} token={token} />
     </ShareLayout>
   );
 };
