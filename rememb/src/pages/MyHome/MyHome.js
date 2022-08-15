@@ -21,13 +21,23 @@ const MyHome = ({ res }) => {
 
   const getToken = () => {
     const token = window.location.href.split('=')[1].split('&')[0];
-    axios.post(
+    const userData = axios.get(
+      'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Access-Control-Allow-Origin': `${window.location.href}`,
+          'Access-Control-Allow-Credentials': true,
+        },
+      }
+    ).then(response=>{
+      axios.post(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
-          email:`${email}`,
-          username:`${username}`,
-          provider:`${provider}`,
-          birth:`${birth}`,
+          email:response.email,
+          username:response.name,
+          provider:'naver',
+          birth:response.birthday,
           // token,
         },
         {
@@ -41,21 +51,11 @@ const MyHome = ({ res }) => {
       }).catch(function (error) {
         console.log(error);
       });
-    const userData = axios.get(
-      'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Access-Control-Allow-Origin': `${window.location.href}`,
-          'Access-Control-Allow-Credentials': true,
-        },
-      }
-    ).then(response=>{
       console.log(response.data);
-      setBirth(response.birthday);
-      setEmail(response.email);
-      setUsername(response.name);
-      setProvider('naver');
+      // setBirth(response.birthday);
+      // setEmail(response.email);
+      // setUsername(response.name);
+      // setProvider('naver');
     }
     );
     //CORS에러 뜨는게 당연함 !! 구래서 ARC로 헤더 넣어서 get 요청하면 제대로뜸
