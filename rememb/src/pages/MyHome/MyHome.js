@@ -27,7 +27,7 @@ const MyHome = ({ res }) => {
           token,
         },
         {
-          withCredentials: true,
+          withCredentials: false,
         }
       )
       .then((res) => {
