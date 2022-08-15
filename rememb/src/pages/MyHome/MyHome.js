@@ -18,16 +18,23 @@ const MyHome = ({ res }) => {
   const getToken = () => {
     const token = window.location.href.split('=')[1].split('&')[0];
      axios.post('http://43.200.193.74:8000/user/signin/',{
-            token
+        headers:{
+          'Access-Control-Allow-Origin': `${window.location.href}`,
+        },
+          token  
         },{
             withCredentials:true
         }
         ).then((res)=>{
             window.location.replace('/tutorial');
+            console.log(res);
+            console.log(res.data);
         })
     const userData = axios.get('https://openapi.naver.com/v1/nid/me', {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Access-Control-Allow-Origin': `${window.location.href}`,
+        'Access-Control-Allow-Credentials':true,
       },
     });
     //CORS에러 뜨는게 당연함 !! 구래서 ARC로 헤더 넣어서 get 요청하면 제대로뜸
