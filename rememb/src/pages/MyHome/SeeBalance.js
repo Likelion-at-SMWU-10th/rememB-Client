@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../../components/CommonHome/Layout';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -30,6 +30,13 @@ const MylistBefore = styled.div`
   border-radius: 30px;
 `;
 
+const Img = styled.img`
+  width: 15rem;
+  height: 15rem;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Answer = styled.div``;
 
 const Question = styled.div`
@@ -38,7 +45,7 @@ const Question = styled.div`
   margin-top: 20px;
 `;
 
-const SeeBalance = ({token}) => {
+const SeeBalance = ({ token }) => {
   const navigate = useNavigate();
   const onClick1 = () => {
     // D-7 밸런스게임 페이지로
@@ -50,12 +57,13 @@ const SeeBalance = ({token}) => {
   };
 
   const getToken = () => {
+    console.log('제발수미나');
     const userData = axios
       .get(
-        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/6/',
+        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/15/',
         {
           headers: {
-            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYwNTU3ODMwLCJpYXQiOjE2NjA1NTQ4MzAsImp0aSI6IjJlYzQ2Y2MyN2M0ZDQ3OGY5YzBmNTFlMTliMThlY2RjIiwidXNlcl9pZCI6OX0.M19T7LANH8YLDd1dIsN9PR6KzHFyN2nNTuecJEqAt3k`,
+            Authorization: `Bearer ${token}`,
             'Access-Control-Allow-Origin': `${window.location.href}`,
             'Access-Control-Allow-Credentials': true,
           },
@@ -64,13 +72,11 @@ const SeeBalance = ({token}) => {
       .then((response) => {
         console.log(response);
         console.log(response.data);
-
-        // setBirth(response.birthday);
-        // setEmail(response.email);
-        // setUsername(response.name);
-        // setProvider('naver');
       });
   };
+  useEffect(() => {
+    getToken();
+  }, []);
   return (
     <Layout>
       {/* map써서 컴포넌트들을 다 불러와야할듯
@@ -99,7 +105,9 @@ const SeeBalance = ({token}) => {
         <Answer>자주 쓰는 것</Answer>
       </MylistAfter>
       <Question>D-5 공개</Question>
-      <MylistBefore></MylistBefore>
+      <MylistBefore>
+        <Img src="../../../img/balanceIcon/lock.png" />
+      </MylistBefore>
       <Question>D-4 공개</Question>
       <MylistBefore></MylistBefore>
       <Question>D-3 공개</Question>
