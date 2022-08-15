@@ -15,6 +15,7 @@ import Setting from './pages/Tutorial/Setting';
 import './style.css';
 import './style1.css';
 import LetterContent from './pages/MyHome/LetterContent';
+import Intro from './pages/Etc/Intro';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
       <Route path="/myParty" element={<Home />}></Route>
       <Route path="/myParty/ansBalance" element={<AnswerBalance />}></Route>
       <Route path="/myParty/seeBalance" element={<SeeBalance />}></Route>
-      <Route path="/lettercontent" element={<LetterContent/>}></Route>
+      <Route path="/lettercontent" element={<LetterContent />}></Route>
       {/* 남의 페이지 볼 때 */}
       <Route path="/others" element={<YourHome />}></Route>`
       <Route path="/others/selectimg" element={<SelectImg />}></Route>
@@ -36,6 +37,8 @@ function App() {
       {/* 기타 페이지 (정보확인, 롤링페이퍼 등) */}
       <Route path="/etc/seeRP" element={<RollingPaper />}></Route>
       <Route path="/etc/sample" element={<Sample />}></Route>
+      {/* 초기 페이지 */}
+      <Route path="/introduce" element={<Intro />}></Route>
     </Routes>
   );
 }
