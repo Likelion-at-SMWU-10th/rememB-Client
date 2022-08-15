@@ -34,10 +34,10 @@ const MyHome = ({ res }) => {
       axios.post(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
-          email:response.data.response.name,
-          username: "박소똥",
+          email:response.data.response.email,
+          username: response.data.response.name,
           provider:'naver',
-          birth:"2003-01-05"
+          birth:response.data.response.birthyear+"-"+response.data.response.birthday
           // token,
         },
         {
