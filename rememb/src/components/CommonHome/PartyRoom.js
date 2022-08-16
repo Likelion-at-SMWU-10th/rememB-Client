@@ -39,7 +39,7 @@ const Div = styled.div`
   top:45%;
   z-index: 99;
 `;
-const PartyRoom = () => {
+const PartyRoom = ({name, bday}) => {
   const navi=useNavigate();
   // const [img,setImg]=useState();
   const onImgClick=(e)=>{

@@ -14,9 +14,9 @@ const Dday=styled.div`
   font-weight:400;
   font-size: 6rem;
 `;
-const MainTitle = () => {
-    const [name,setName]=useState("멋사");
-    const [bday,setBday]=useState(3);
+const MainTitle = ({name, bday}) => {
+    // const [name,setName]=useState("멋사");
+    // const [bday,setBday]=useState(3);
 
   return (
     <>
