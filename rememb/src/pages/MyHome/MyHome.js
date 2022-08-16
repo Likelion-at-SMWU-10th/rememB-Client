@@ -14,19 +14,15 @@ const MyHome = ({ res }) => {
   const [birth,setBirth]=useState('');
   const [provider,setProvider]=useState('');
   const [accessT,setAccessT]=useState('');
-  // const [token,setToken]=useState('');
   const [access,setAccess]=useState('');
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
   if (!window.location.href.includes('access_token')) {
     res = location.state.res;
     console.log(res);
-    // console.log(res);
   }
 
   const getToken = () => {
     const token=window.location.href.split('=')[1].split('&')[0];
-    // console.log(token);
-    // console.log(access);
     const userData = axios.get(
       'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
       {
@@ -48,39 +44,28 @@ const MyHome = ({ res }) => {
       axios.post(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
-          email:response.data.response.email,
-          username: response.data.response.name,
-          provider:'naver',
-          birth:response.data.response.birthyear+"-"+response.data.response.birthday
-          // email:email,
-          // username: username,
-          // provider:'naver',
-          // birth:birth
-          // token,
-        },
-        {
-          withCredentials: false,
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Access-Control-Allow-Origin': `${window.location.href}`,
+            'Access-Control-Allow-Credentials': true,
+          },
         }
       )
       .then((res) => {
-        // console.log(res);
         console.log(res.data);
         console.log(res.data.results.accessToken);
         setAccess(res.data.results.accessToken);
       }).catch(function (error) {
         console.log(error);
       });
-      console.log(response.data);
     }
     );
-    //CORS에러 뜨는게 당연함 !! 구래서 ARC로 헤더 넣어서 get 요청하면 제대로뜸
   };
 
   useEffect(() => {
     window.location.href.includes('access_token') && getToken();
   }, []);
   useEffect(() => {
-    // setToken(access)
     setAccessT(access);
   }, [access]);
   return (

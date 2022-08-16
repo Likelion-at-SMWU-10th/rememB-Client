@@ -60,7 +60,6 @@ const SeeBalance = () => {
   };
 
   const getToken = () => {
-    console.log('제발수미나');
     const userData = axios
       .get(
         'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/15/',
@@ -73,7 +72,6 @@ const SeeBalance = () => {
         }
       )
       .then((response) => {
-        console.log(response);
         console.log(response.data);
       });
   };

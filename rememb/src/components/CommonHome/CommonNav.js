@@ -3,12 +3,21 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-const CommonNav=() => {
+const CommonNav = () => {
   return (
     <>
       {[false].map((expand) => (
-        <Navbar key={expand} expand={expand} className="mb-3" style={{position:'absolute',top:'15rem',right:'10rem'}}>
-          <Container fluid >
+        <Navbar
+          key={expand}
+          expand={expand}
+          className="mb-3"
+          style={{
+            position: 'absolute',
+            top: '15rem',
+            right: '10rem',
+          }}
+        >
+          <Container fluid>
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -24,7 +33,9 @@ const CommonNav=() => {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/etc/seeRP">롤링페이퍼로 전환하기</Nav.Link>
-                  <Nav.Link href="/myParty/seeBalance">내 밸런스게임 보기</Nav.Link>
+                  <Nav.Link href="/myParty/seeBalance">
+                    내 밸런스게임 보기
+                  </Nav.Link>
                   <Nav.Link href="/myParty">내 파티룸 가기</Nav.Link>
                 </Nav>
               </Offcanvas.Body>
@@ -34,6 +45,6 @@ const CommonNav=() => {
       ))}
     </>
   );
-}
+};
 
 export default CommonNav;
